@@ -112,6 +112,21 @@ public class MainApplicationFrame extends JFrame
             });
             lookAndFeelMenu.add(systemLookAndFeel);
         }
+        
+        
+        JMenu exitMenu = new JMenu("Меню выхода");
+        JMenuItem exitButton = new JMenuItem("Закрыть приложение");
+         UIManager.put("OptionPane.yesButtonText" , "Да" );
+         UIManager.put("OptionPane.noButtonText" , "Нет" );
+
+         exitButton.addActionListener((event) -> {
+         int reply = JOptionPane.showConfirmDialog(null,
+         "Вы действительно хотите выйти?", "Выйти", JOptionPane.YES_NO_OPTION);
+         if (reply == JOptionPane.YES_OPTION)
+         System.exit(0);
+         });
+         exitMenu.add(exitButton);
+         menuBar.add(exitMenu);
 
         {
             JMenuItem crossplatformLookAndFeel = new JMenuItem("Универсальная схема", KeyEvent.VK_S);
